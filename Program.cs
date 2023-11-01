@@ -22,24 +22,35 @@ Console.WriteLine("S - Subtraction");
 Console.WriteLine("M - Multiplication");
 Console.WriteLine("D - Division");
 Console.WriteLine("Q - To quit");
-try
-{
-   char option = Console.ReadKey(true).KeyChar;
-}
-catch(Exception e)
-{ 
-  Console.WriteLine("Please enter a valid command");
-}
 
-int Operate(char o)
+char op = Console.ReadKey(true).KeyChar;
+
+Option(op);
+
+
+void Option(char o)
 {
     int x = 0;
     int y = 0;
+
     if (o == 'Q') 
     {
         Environment.Exit(0);
     
     }
+    Console.Write("Enter your first number: ");
+    x = int.Parse(Console.ReadLine());
+    Console.Write("Enter your second number:");
+    y = int.Parse(Console.ReadLine());
+    Console.WriteLine(answ(o, x, y)+" = "+Operate(o, x, y));
+
+
+
+
+}
+
+int Operate(char o, int x, int y)
+{
     switch (o)
     {
         case 'A':
@@ -53,13 +64,21 @@ int Operate(char o)
         default:
             return 0;
     }
-    Console.Write("Enter your first number: ");
-    x = int.Parse(Console.ReadLine());
-    Console.Write("Enter your second number:");
-    y = int.Parse(Console.ReadLine());
-
-
-
-
 }
 
+string answ(char o, int x, int y)
+{
+    switch (o)
+    {
+        case 'A':
+            return $"{x} + {y}";
+        case 'S':
+            return $"{x} - {y}";
+        case 'M':
+            return $"{x} * {y}";
+        case 'D':
+            return $"{x} / {y}";
+        default:
+            return " ";
+    }
+}
