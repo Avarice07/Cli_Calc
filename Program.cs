@@ -16,16 +16,31 @@ Console.WriteLine("  | |1| |2| |3|  |x| | ");
 Console.WriteLine("  | |.| |0| |=|  |/| | ");
 Console.WriteLine("  |__________________| ");
 Console.WriteLine(" ");
-Console.WriteLine("Which operation would you like to do??");
-Console.WriteLine("A - Addition");
-Console.WriteLine("S - Subtraction");
-Console.WriteLine("M - Multiplication");
-Console.WriteLine("D - Division");
-Console.WriteLine("Q - To quit");
 
-char op = Console.ReadKey(true).KeyChar;
+bool t = true;
+bool t1 = true;
 
-Option(op);
+while (t) 
+{
+    
+    Console.WriteLine("Which operation would you like to do??");
+    Console.WriteLine("A - Addition");
+    Console.WriteLine("S - Subtraction");
+    Console.WriteLine("M - Multiplication");
+    Console.WriteLine("D - Division");
+    Console.WriteLine("Q - To quit");
+    char op = Console.ReadKey(true).KeyChar;
+    Option(op);
+    Console.Write("Do you want to Calculate again?? Press Y or N ");
+    string yn = Console.ReadLine().Trim();
+    if (yn.ToUpper() == "N") 
+    { 
+       Environment.Exit(0);
+    }
+}
+
+
+
 
 
 void Option(char o)
@@ -40,7 +55,7 @@ void Option(char o)
     }
     Console.Write("Enter your first number: ");
     x = int.Parse(Console.ReadLine());
-    Console.Write("Enter your second number:");
+    Console.Write("Enter your second number: ");
     y = int.Parse(Console.ReadLine());
     Console.WriteLine(answ(o, x, y)+" = "+Operate(o, x, y));
 
