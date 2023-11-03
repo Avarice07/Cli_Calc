@@ -18,7 +18,6 @@ Console.WriteLine("  |__________________| ");
 Console.WriteLine(" ");
 
 bool t = true;
-bool t1 = true;
 
 while (t) 
 {
@@ -33,14 +32,15 @@ while (t)
     Option(op);
     Console.Write("Do you want to Calculate again?? Press Y or N ");
     string yn = Console.ReadLine().Trim();
-    if (yn.ToUpper() == "N") 
-    { 
-       Environment.Exit(0);
+    if (yn.ToUpper() == "N")
+    {
+        Environment.Exit(0);
+    }
+    if (yn.ToUpper() != "Y")
+    {
+        Console.WriteLine("Command Error, Please type in Y or N!!!");
     }
 }
-
-
-
 
 
 void Option(char o)
@@ -54,14 +54,24 @@ void Option(char o)
     
     }
     Console.Write("Enter your first number: ");
-    x = int.Parse(Console.ReadLine());
+    x = Converter(Console.ReadLine());
     Console.Write("Enter your second number: ");
-    y = int.Parse(Console.ReadLine());
+    y = Converter(Console.ReadLine());
     Console.WriteLine(answ(o, x, y)+" = "+Operate(o, x, y));
+}
 
-
-
-
+int Converter(string s) {
+   
+        try
+        {
+            return int.Parse(s);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Value Error!!!!");
+        return 0;
+        }
+    
 }
 
 int Operate(char o, int x, int y)
